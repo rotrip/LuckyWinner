@@ -7,15 +7,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-
+    @CrossOrigin(origins = "http://localhost:3000") // Allow only this origin
     @GetMapping("/get")
     public ResponseEntity<User> getWinner() {
         User winner = userService.getRandomUser();
